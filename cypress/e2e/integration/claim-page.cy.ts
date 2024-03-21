@@ -1,20 +1,23 @@
 // claim-page.spec.ts
 import { ClaimPage } from '../../pages/ClaimPage';
 import { User } from '../../models/User';
+import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
 
-describe('Claim Page', () => {
-  beforeEach(() => {
-    cy.fixture('user').as('user');
-  });
-
-  it('should navigate to claim page, fill form and assert terms and conditions', function () {
-    const user: User = this.user;
+Given('the user is on the claim page', () => {
     const hixmeBaseUrl = Cypress.env('hixmeBaseUrl');
-
     cy.visit(`${hixmeBaseUrl}/claim-page`);
-
-    ClaimPage.fillClaimForm(user);
-    ClaimPage.submitClaimForm();
-    ClaimPage.assertTermsAndConditionsPageVisible();
-  });
 });
+
+When('the user enters information from the saved file', () => {
+    const user: User = this.user;
+    ClaimPage.fillClaimForm(user);
+});
+
+When('the user submits the form', () => {
+    ClaimPage.submitClaimForm();
+});
+
+Then('the user should see the terms and conditions page', () => {
+    ClaimPage.assertTermsAndConditionsPageVisible();
+});
+  

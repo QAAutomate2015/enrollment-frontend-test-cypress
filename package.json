@@ -11,6 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^6.0.1",
+    "@cypress/cucumber-preprocessor": "^4.1.1",
+    "@types/cypress-cucumber-preprocessor": "^2.0.4",
     "@types/node": "^20.11.30",
     "cypress": "^13.7.0",
     "typescript": "^5.4.3"
